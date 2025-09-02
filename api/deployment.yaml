@@ -63,7 +63,7 @@ spec:
     spec:
       containers:
         - name: api-portfolio
-          image: docker.io/quochau151/api_portfolio:latest
+          image: docker.io/quochau151/api_portfolio:main-057170a
           ports:
             - containerPort: 4000
               name: http
