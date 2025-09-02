@@ -1,3 +1,25 @@
+---
+#----------------------------------------------
+# ConfigMap - Biến môi trường cho UI
+#----------------------------------------------
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: ui-portfolio-config
+  namespace: portfolio
+  labels:
+    app: ui-portfolio
+    component: config
+data:
+  NEXT_PUBLIC_URL: https://quochau.com
+  NEXT_PUBLIC_GOOGLE_CLIENT_ID: 1080194740749-pkgmhcn6jqrf4grj4f8pur7dmc28839s.apps.googleusercontent.com
+  NEXT_PUBLIC_API_ENDPOINT: https://api.quochau.com
+  NEXT_PUBLIC_GOOGLE_AUTHORIZED_REDIRECT_URI: https://api.quochau.com/auth/login/google
+
+---
+#----------------------------------------------
+# Deployment - Deployment cho UI
+#----------------------------------------------
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -17,7 +39,16 @@ spec:
       containers:
         - name: ui-portfolio
           image: docker.io/quochau151/ui_portfolio:latest
+          ports:
+            - containerPort: 3000
+              name: http
+          envFrom:
+            - configMapRef:
+                name: ui-portfolio-config
 ---
+#----------------------------------------------
+# Service - Service cho UI
+#----------------------------------------------
 apiVersion: v1
 kind: Service
 metadata:
