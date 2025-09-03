@@ -38,7 +38,7 @@ spec:
     spec:
       containers:
         - name: ui-portfolio
-          image: docker.io/quochau151/ui_portfolio:main-7201a72
+          image: docker.io/quochau151/ui_portfolio:main-6a22a65
           ports:
             - containerPort: 3000
               name: http
