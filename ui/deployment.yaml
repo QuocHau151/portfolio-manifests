@@ -40,7 +40,7 @@ spec:
         - name: ui-portfolio
           image: docker.io/quochau151/ui_portfolio:main-cc1c873
           ports:
-            - containerPort: 3000
+            - containerPort: 80
               name: http
           envFrom:
             - configMapRef:
@@ -58,5 +58,31 @@ spec:
     app: ui-portfolio
   ports:
     - port: 80
-      targetPort: 3000
-  type: LoadBalancer
+      targetPort: 80
+  type: ClusterIP
+
+---
+#----------------------------------------------
+# Ingress - Expose Service ra internet
+#----------------------------------------------
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ui-portfolio-ingress
+  namespace: portfolio
+  labels:
+    app: ui-portfolio
+    component: ingress
+spec:
+  ingressClassName: nginx
+  rules:
+    - host: quochau.com
+      http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ui-portfolio-service
+                port:
+                  number: 80
