@@ -11,10 +11,11 @@ metadata:
     app: ui-portfolio
     component: config
 data:
-  NEXT_PUBLIC_URL: https://quochau.com
-  NEXT_PUBLIC_GOOGLE_CLIENT_ID: 1080194740749-pkgmhcn6jqrf4grj4f8pur7dmc28839s.apps.googleusercontent.com
-  NEXT_PUBLIC_API_ENDPOINT: https://api.quochau.com
-  NEXT_PUBLIC_GOOGLE_AUTHORIZED_REDIRECT_URI: https://api.quochau.com/auth/login/google
+  NEXT_PUBLIC_URL: "https://quochau.com"
+  NEXT_PUBLIC_GOOGLE_CLIENT_ID: "1080194740749-pkgmhcn6jqrf4grj4f8pur7dmc28839s.apps.googleusercontent.com"
+  NEXT_PUBLIC_API_ENDPOINT: "https://api.quochau.com"
+  NEXT_PUBLIC_GOOGLE_AUTHORIZED_REDIRECT_URI: "https://api.quochau.com/auth/login/google"
+  PORT: "80"
 
 ---
 #----------------------------------------------
